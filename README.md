@@ -39,3 +39,16 @@ GitHub
 - Article.cs 모델 클래스
 - Articles.sql 테이블
 - ArticleApp 데이터베이스 
+
+## 4. 리포지토리 패턴과 리포지토리 인터페이스
+
+- Dul.dll 파일 참조
+- IArticleRepository.cs
+- ArticleRepository.cs (ArticleRepositoryAdoNet, ArticleRepositoryDapper, ArticleRepositoryEfCore, ...)
+
+
+## 5. 데이터베이스 컨텍스트 클래스(ArticleAppDbContext.cs) 
+
+- ArticleDbContext.cs
+
+
