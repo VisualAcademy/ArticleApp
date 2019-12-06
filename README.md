@@ -47,8 +47,7 @@ GitHub
 - ArticleRepository.cs (ArticleRepositoryAdoNet, ArticleRepositoryDapper, ArticleRepositoryEfCore, ...)
 
 
-## 5. 데이터베이스 컨텍스트 클래스(ArticleAppDbContext.cs) 
+## 5. Entity Framework Core 참조 및 데이터베이스 컨텍스트 클래스(ArticleAppDbContext.cs) 생성
 
 - ArticleDbContext.cs
-
 
