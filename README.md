@@ -42,3 +42,12 @@
 
 - ArticleDbContext.cs
 
+## 6. 리포지토리 클래스의 주요 메서드 기능 구현
+
+이번 시간에는 Entity Framework Core를 사용하여 리포지토리 클래스의 주요 메서드의 기능을 구현합니다.
+
+**리포지토리**, **EF Core**, **CRUD**
+
+
+
+
