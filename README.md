@@ -23,16 +23,16 @@ __게시판__, __VisualStudio__, __닷넷__
 
 게시판 프로젝트를 진행하기 위해 Visual Studio에서 기본 솔루션을 생성하고 이를 GitHub의 공개 리포지토리에 게시하여 기능을 계속 만들어 나가는 기반을 마련합니다. 
 
-__솔루션__, __프로젝트__, **
+__솔루션__, __프로젝트__, **GitHub** 
 
 - Visual Studio 2019 사용
 - ArticleApp 솔루션
- - ArticleApp.Models
- - ArticleApp.Models.Tests
- - ArticleApp.SqlServer 
+  - ArticleApp.Models
+  - ArticleApp.Models.Tests
+  - ArticleApp.SqlServer 
 
 - GitHub
- - https://github.com/VisualAcademy/ArticleApp.git
+  - https://github.com/VisualAcademy/ArticleApp.git
 
 ## 3. 최소 크기의 모델과 테이블 생성 그리고 로컬 데이터베이스 게시
 
@@ -70,7 +70,4 @@ __모델클래스__, __게시판테이블__, __로컬데이터베이스__
 **리포지토리**, **EF Core**, **CRUD**
 
 - ArticleRepository.cs
-
-
-
 
