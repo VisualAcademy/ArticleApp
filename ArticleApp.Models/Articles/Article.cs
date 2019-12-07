@@ -16,7 +16,8 @@ namespace ArticleApp.Models
         /// <summary>
         /// 제목
         /// </summary>
-        [Required]
+        //[Required]
+        [Required(ErrorMessage = "제목을 입력하세요.")]
         public string Title { get; set; }
     }
 }
