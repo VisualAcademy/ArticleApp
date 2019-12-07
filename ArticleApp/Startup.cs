@@ -46,7 +46,7 @@ namespace ArticleApp
         }
 
         /// <summary>
-        /// 게시판(Articles) 관련 의존성 주입 관련 코드만 따로 모아서 관리
+        /// 게시판(Articles) 관련 의존성(종속성) 주입 관련 코드만 따로 모아서 관리
         /// </summary>
         private void AddDependencyInjectionContainerForArticles(IServiceCollection services)
         {
