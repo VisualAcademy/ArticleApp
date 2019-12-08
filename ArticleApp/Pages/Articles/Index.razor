@@ -84,6 +84,6 @@ else
         pager.RecordCount = pagingData.TotalRecords; // 총 레코드 수
         articles = pagingData.Records.ToList(); // 페이징 처리된 레코드
 
-        StateHasChanged(); // 현재 컴포넌트 재로드 
+        StateHasChanged(); // 현재 컴포넌트 재로드(Pager Refresh) 
     }
 }
