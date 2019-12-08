@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ArticleApp.Models.Tests
 {
+    /// <summary>
+    /// Test Class: (Arrange -> Act -> Assert) Pattern
+    /// </summary>
     [TestClass]
     public class ArticleRepositoryTest
     {
@@ -16,20 +19,24 @@ namespace ArticleApp.Models.Tests
         {
             // DbContextOptions<T> Object Creation
             var options = new DbContextOptionsBuilder<ArticleAppDbContext>()
-                .UseInMemoryDatabase(databaseName: "ArticleApp").Options;
+                .UseInMemoryDatabase(databaseName: $"ArticleApp{Guid.NewGuid()}").Options;
                 //.UseSqlServer("server=(localdb)\\mssqllocaldb;database=ArticleApp;integrated security=true;").Options;
 
             // AddAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Repository Object Creation
+                //[!] Arrange
                 var repository = new ArticleRepository(context);
                 var model = new Article { Title = "[1] 게시판 시작", Created = DateTime.Now };
+
+                //[!] Act
                 await repository.AddArticleAsync(model);
                 await context.SaveChangesAsync();
             }
             using (var context = new ArticleAppDbContext(options))
             {
+                //[!] Assert
                 Assert.AreEqual(1, await context.Articles.CountAsync());
                 var model = await context.Articles.Where(m => m.Id == 1).SingleOrDefaultAsync();
                 Assert.AreEqual("[1] 게시판 시작", model?.Title); 
@@ -42,9 +49,9 @@ namespace ArticleApp.Models.Tests
                 ////using (var transaction = context.Database.BeginTransaction()) { transaction.Commit(); }
                 var repository = new ArticleRepository(context);
                 var model = new Article { Title = "[2] 게시판 가동", Created = DateTime.Now };
-                context.Articles.Add(model);
+                await context.Articles.AddAsync(model);
                 await context.SaveChangesAsync(); //[1]
-                context.Articles.Add(new Article { Title = "[3] 게시판 중지", Created = DateTime.Now });
+                await context.Articles.AddAsync(new Article { Title = "[3] 게시판 중지", Created = DateTime.Now });
                 await context.SaveChangesAsync(); //[2]
             }
             using (var context = new ArticleAppDbContext(options))
