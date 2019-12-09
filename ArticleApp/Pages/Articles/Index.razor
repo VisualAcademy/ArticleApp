@@ -10,6 +10,8 @@
 
 @using ArticleApp.Pages.Articles.Components
 
+@inject NavigationManager NavigationManager
+
 <h3>Index</h3>
 
 <div>
@@ -46,7 +48,11 @@ else
             {
             <tr>
                 <td>@article.Id</td>
-                <td>@article.Title</td>
+                <td @onclick="@(() => btnTitle_Click(article.Id))">
+                    <a href="/Articles/Details/@article.Id">
+                       @article.Title
+                    </a>
+                </td>
                 <td>@article.Created.ToShortTimeString()</td>
                 <td>
                     <a href="/Articles/Details/@article.Id" class="btn btn-light">Details</a>
@@ -62,6 +68,14 @@ else
 <ArticlePager Model="pager" PageIndexChanged="PageIndexChanged"></ArticlePager>
 
 @code {
+    /// <summary>
+    /// 제목의 td 태그 영역을 클릭했을 때 해당 상세보기 페이지로 이동
+    /// </summary>
+    private void btnTitle_Click(int id)
+    {
+        NavigationManager.NavigateTo($"/Articles/Details/{id}");
+    }
+
     // 페이저 기본값 설정
     private PagerBase pager = new PagerBase()
     {
@@ -88,7 +102,7 @@ else
     private async void PageIndexChanged(int pageIndex)
     {
         pager.PageIndex = pageIndex;
-        pager.PageNumber = pageIndex + 1; 
+        pager.PageNumber = pageIndex + 1;
 
         var pagingData = await ArticleRepository.GetAllAsync(pager.PageIndex, pager.PageSize);
         pager.RecordCount = pagingData.TotalRecords; // 총 레코드 수

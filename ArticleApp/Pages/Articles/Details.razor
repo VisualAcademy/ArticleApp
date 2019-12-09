@@ -16,7 +16,7 @@
                 <label for="id">Title: </label> @Model.Title
             </div>
             <div class="form-group">
-                @Model.Content
+                @((MarkupString)lblContext)
             </div>
             <div class="form-group">
                 <a href="/Articles/Edit/@Model.Id" class="btn btn-primary">Edit</a>
@@ -34,8 +34,12 @@
 
     public Article Model { get; set; } = new Article();
 
+    private string lblContext = "";
+
     protected override async Task OnInitializedAsync()
     {
         Model = await ArticleRepository.GetArticleByIdAsync(Id);
+        //lblContext = Model.Content.Replace("\n", "<br />"); // 내용
+        lblContext = Dul.HtmlUtility.EncodeWithTabAndSpace(Model.Content); // \n, \t
     }
 }
