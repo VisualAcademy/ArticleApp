@@ -5,7 +5,12 @@ CREATE TABLE [dbo].[Articles]
 	[Title] NVarChar(255) Not Null,					-- 제목
 	
 	-- TODO: Columns Add Region
-	[Content] NVarChar(Max) Not Null,					-- 내용
+	[Content] NVarChar(Max) Null,					-- 내용 => TODO: Not Null
+
+
+
+	[IsPinned] Bit Null Default(0),				-- 공지글로 올리기 
+
 
 	-- AuditableBase.cs 참조
 	[CreatedBy] NVarChar(255) Null,			-- 등록자(Creator)
