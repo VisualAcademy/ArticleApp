@@ -1,6 +1,6 @@
 ﻿using ArticleApp.Models;
 using Dul.Domain.Common;
-using Dul.Web;
+using DulPager;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace ArticleApp.Pages.Articles
         public IArticleRepository ArticleRepository { get; set; }
 
         // 페이저 기본값 설정
-        private PagerBase pager = new PagerBase()
+        private DulPagerBase pager = new DulPagerBase()
         {
             PageNumber = 1,
             PageIndex = 0,

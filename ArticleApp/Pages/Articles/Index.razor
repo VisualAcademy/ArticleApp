@@ -1,7 +1,7 @@
 ﻿@page "/Articles"
 @page "/Articles/Index"
 
-@using ArticleApp.Pages.Articles.Components 
+@using ArticleApp.Pages.Articles.Components
 
 <h3>Index</h3>
 
@@ -15,7 +15,7 @@
         </NotAuthorized>
     </AuthorizeView>
     <AuthorizeView Roles="Administrators, Managers">
-            <a href="/Articles/Manage" class="btn btn-primary">Manage</a>
+        <a href="/Articles/Manage" class="btn btn-primary">Manage</a>
     </AuthorizeView>
 </div>
 
@@ -37,23 +37,23 @@ else
         <tbody>
             @foreach (var article in articles)
             {
-            <tr>
-                <td>@article.Id</td>
-                <td @onclick="@(() => btnTitle_Click(article.Id))">
-                    <a href="/Articles/Details/@article.Id">
-                       @article.Title
-                    </a>
-                </td>
-                <td>@article.Created.ToShortTimeString()</td>
-                <td>
-                    <a href="/Articles/Details/@article.Id" class="btn btn-light">Details</a>
-                    <a href="/Articles/Edit/@article.Id" class="btn btn-light">Edit</a>
-                    <a href="/Articles/Delete/@article.Id" class="btn btn-light">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@article.Id</td>
+                    <td @onclick="@(() => btnTitle_Click(article.Id))">
+                        <a href="/Articles/Details/@article.Id">
+                            @article.Title
+                        </a>
+                    </td>
+                    <td>@article.Created.ToShortTimeString()</td>
+                    <td>
+                        <a href="/Articles/Details/@article.Id" class="btn btn-light">Details</a>
+                        <a href="/Articles/Edit/@article.Id" class="btn btn-light">Edit</a>
+                        <a href="/Articles/Delete/@article.Id" class="btn btn-light">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 }
 
-<ArticlePager Model="pager" PageIndexChanged="PageIndexChanged"></ArticlePager>
+<DulPagerComponent Model="pager" PageIndexChanged="PageIndexChanged"></DulPagerComponent>
