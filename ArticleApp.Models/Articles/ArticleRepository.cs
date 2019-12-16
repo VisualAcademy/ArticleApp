@@ -63,13 +63,13 @@ namespace ArticleApp.Models
         public async Task<PagingResult<Article>> GetAllAsync(int pageIndex, int pageSize)
         {
             var totalRecords = await _context.Articles.CountAsync();
-            var articles = await _context.Articles
+            var models = await _context.Articles
                 .OrderByDescending(m => m.Id)
                 .Skip(pageIndex * pageSize)
                 .Take(pageSize)
                 .ToListAsync();
 
-            return new PagingResult<Article>(articles, totalRecords);
+            return new PagingResult<Article>(models, totalRecords);
         }
     }
 }
