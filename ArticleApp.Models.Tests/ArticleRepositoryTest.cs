@@ -22,7 +22,7 @@ namespace ArticleApp.Models.Tests
                 .UseInMemoryDatabase(databaseName: $"ArticleApp{Guid.NewGuid()}").Options;
                 //.UseSqlServer("server=(localdb)\\mssqllocaldb;database=ArticleApp;integrated security=true;").Options;
 
-            // AddAsync() Method Test
+            //[1] AddAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Repository Object Creation
@@ -42,7 +42,7 @@ namespace ArticleApp.Models.Tests
                 Assert.AreEqual("[1] 게시판 시작", model?.Title); 
             }
 
-            // GetAllAsync() Method Test
+            //[2] GetAllAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 //// 트랜잭션 관련 코드는 InMemoryDatabase 공급자에서는 지원 X
@@ -61,7 +61,7 @@ namespace ArticleApp.Models.Tests
                 Assert.AreEqual(3, models.Count);
             }
 
-            // GetByIdAsync() Method Test
+            //[3] GetByIdAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Empty
@@ -74,7 +74,7 @@ namespace ArticleApp.Models.Tests
                 Assert.AreEqual("[2] 게시판 가동", model.Title);
             }
 
-            // GetEditAsync() Method Test
+            //[4] GetEditAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Empty
@@ -91,7 +91,7 @@ namespace ArticleApp.Models.Tests
                     (await context.Articles.Where(m => m.Id == 2).SingleOrDefaultAsync()).Title);
             }
 
-            // GetDeleteAsync() Method Test
+            //[5] GetDeleteAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Empty
@@ -106,7 +106,7 @@ namespace ArticleApp.Models.Tests
                 Assert.IsNull(await repository.GetArticleByIdAsync(2));
             }
 
-            // PagingAsync() Method Test
+            //[6] PagingAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Empty
