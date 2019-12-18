@@ -19,7 +19,9 @@
             </div>
         </div>
         <div class="form-group row">
-            @((MarkupString)lblContext)
+            <div class="col-sm-12">
+                @((MarkupString)lblContext)
+            </div>
         </div>
         <div class="form-group">
             <a href="/Articles/Edit/@Model.Id" class="btn btn-primary">Edit</a>
