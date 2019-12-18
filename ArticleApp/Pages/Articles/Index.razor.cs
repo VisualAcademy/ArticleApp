@@ -29,6 +29,11 @@ namespace ArticleApp.Pages.Articles
 
         protected override async Task OnInitializedAsync()
         {
+            await DisplayData();
+        }
+
+        private async Task DisplayData()
+        {
             //[1] 전체 데이터 모두 출력
             //articles = await ArticleRepository.GetArticlesAsync();
 
@@ -44,9 +49,7 @@ namespace ArticleApp.Pages.Articles
             pager.PageIndex = pageIndex;
             pager.PageNumber = pageIndex + 1;
 
-            var pagingData = await ArticleRepository.GetAllAsync(pager.PageIndex, pager.PageSize);
-            pager.RecordCount = pagingData.TotalRecords; // 총 레코드 수
-            articles = pagingData.Records.ToList(); // 페이징 처리된 레코드
+            await DisplayData(); 
 
             StateHasChanged(); // 현재 컴포넌트 재로드(Pager Refresh) 
         }
