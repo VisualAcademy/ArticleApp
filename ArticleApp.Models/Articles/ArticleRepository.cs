@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ArticleApp.Models
 {
     /// <summary>
-    /// Repository Class: ADO.NET 또는 Dapper 또는 Entity Framework Core 
+    /// Repository Class: ADO.NET or Dapper or Entity Framework Core 
     /// </summary>
     public class ArticleRepository : IArticleRepository
     {

@@ -5,7 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ArticleApp.Models
 {
     /// <summary>
-    /// 게시판(Article) 모델 클래스: Articles 테이블과 일대일로 매핑 
+    /// [2] Model Class: Article 모델 클래스 == Articles 테이블과 일대일로 매핑 
+    /// Article, ArticleModel, ArticleViewModel, ArticleBase, ArticleDto, ArticleEntity, ArticleObject, ...
     /// </summary>
     [Table("Articles")]
     public class Article : AuditableBase
