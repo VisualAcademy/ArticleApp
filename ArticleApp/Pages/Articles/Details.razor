@@ -20,7 +20,7 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-12">
-                @((MarkupString)lblContext)
+                @((MarkupString)content)
             </div>
         </div>
         <div class="form-group">
@@ -37,12 +37,12 @@
 
     public Article Model { get; set; } = new Article();
 
-    private string lblContext = "";
+    private string content = "";
 
     protected override async Task OnInitializedAsync()
     {
         Model = await ArticleRepository.GetArticleByIdAsync(Id);
         //lblContext = Model.Content.Replace("\n", "<br />"); // 내용
-        lblContext = Dul.HtmlUtility.EncodeWithTabAndSpace(Model.Content); // \n, \t
+        content = Dul.HtmlUtility.EncodeWithTabAndSpace(Model.Content); // \n, \t
     }
 }
