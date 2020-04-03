@@ -10,9 +10,9 @@ namespace ArticleApp.Models
     /// </summary>
     [Table("Articles")]
     public class Article : AuditableBase
-    {        
+    {
         /// <summary>
-        /// 일련번호
+        /// 일련 번호(Serial Number)
         /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
