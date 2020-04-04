@@ -1,5 +1,4 @@
-﻿// Install-Package Microsoft.EntityFrameworkCore.SqlServer
-// Install-Package Microsoft.EntityFrameworkCore.InMemory
+﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -14,15 +13,19 @@ namespace ArticleApp.Models.Tests
     [TestClass]
     public class ArticleRepositoryTest
     {
+        // Install-Package Microsoft.EntityFrameworkCore.SqlServer
+        // Install-Package Microsoft.EntityFrameworkCore.InMemory
+
         [TestMethod]
         public async Task ArticleRepositoryAllMethodTest()
         {
-            // DbContextOptions<T> Object Creation
+            //[0] DbContextOptions<T> Object Creation
             var options = new DbContextOptionsBuilder<ArticleAppDbContext>()
                 .UseInMemoryDatabase(databaseName: $"ArticleApp{Guid.NewGuid()}").Options;
-                //.UseSqlServer("server=(localdb)\\mssqllocaldb;database=ArticleApp;integrated security=true;").Options;
+            //.UseSqlServer("server=(localdb)\\mssqllocaldb;database=ArticleApp;integrated security=true;").Options;
 
             //[1] AddAsync() Method Test
+            //[1][1] Repository 클래스를 사용하여 저장
             using (var context = new ArticleAppDbContext(options))
             {
                 // Repository Object Creation
@@ -30,14 +33,16 @@ namespace ArticleApp.Models.Tests
                 var repository = new ArticleRepository(context);
                 var model = new Article { Title = "[1] 게시판 시작", Created = DateTime.Now };
 
-                //[!] Act
+                //[!] Act: AddAsync() 메서드 테스트
                 await repository.AddArticleAsync(model);
-                await context.SaveChangesAsync();
+                await context.SaveChangesAsync(); // 이 코드는 생략 가능
             }
+            //[1][2] DbContext 클래스를 통해서 개수 및 레코드 확인 
             using (var context = new ArticleAppDbContext(options))
             {
                 //[!] Assert
                 Assert.AreEqual(1, await context.Articles.CountAsync());
+
                 var model = await context.Articles.Where(m => m.Id == 1).SingleOrDefaultAsync();
                 Assert.AreEqual("[1] 게시판 시작", model?.Title); 
             }
@@ -45,8 +50,9 @@ namespace ArticleApp.Models.Tests
             //[2] GetAllAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
-                //// 트랜잭션 관련 코드는 InMemoryDatabase 공급자에서는 지원 X
-                ////using (var transaction = context.Database.BeginTransaction()) { transaction.Commit(); }
+                // 트랜잭션 관련 코드는 InMemoryDatabase 공급자에서는 지원 X
+                // using (var transaction = context.Database.BeginTransaction()) { transaction.Commit(); }
+
                 var repository = new ArticleRepository(context);
                 var model = new Article { Title = "[2] 게시판 가동", Created = DateTime.Now };
                 await context.Articles.AddAsync(model);
