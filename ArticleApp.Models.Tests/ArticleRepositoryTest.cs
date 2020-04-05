@@ -91,7 +91,7 @@ namespace ArticleApp.Models.Tests
                 var model = await repository.GetArticleByIdAsync(2);
                 model.Title = "[2] 게시판 바쁨";
                 await repository.EditArticleAsync(model);
-                await context.SaveChangesAsync();
+                await context.SaveChangesAsync(); // 생략가능 - 저장 시점을 코드로 표현하기 위함
 
                 Assert.AreEqual("[2] 게시판 바쁨",
                     (await context.Articles.Where(m => m.Id == 2).SingleOrDefaultAsync()).Title);
