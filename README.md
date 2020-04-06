@@ -193,7 +193,7 @@ __DI__, **의존성주입**, __Startup__
 
  ## 023. 페이저 컴포넌트를 NuGet 갤러리의 DulPager로 대체
   
-갤러기에 공개합니다. 
+NuGet 갤러리에 공개된 DulPager 컴포넌트를 사용합니다. 
   
  **NuGet**, **Pager**, **DulPager**
  
