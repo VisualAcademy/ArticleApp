@@ -65,7 +65,7 @@ namespace ArticleApp.Pages.Articles
         }
 
         /* Notice Modal */
-        private Article _article = new Article(); // 선택항 항목 관리
+        private Article _article = new Article(); // 선택한 항목 관리
 
         private bool isShow = false; // Notice Modal
 
@@ -73,7 +73,7 @@ namespace ArticleApp.Pages.Articles
         {
             _article = article;
             isShow = true; // 창 열기 
-                           //JSRuntime.InvokeAsync<object>("alert", $"{article.Id}를 공지글로 설정합니다.");
+            //JSRuntime.InvokeAsync<object>("alert", $"{article.Id}를 공지글로 설정합니다.");
         }
 
         private void btnClose_Click()
