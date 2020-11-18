@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
@@ -8,7 +7,8 @@ using System.Threading.Tasks;
 namespace ArticleApp.Models.Tests
 {
     /// <summary>
-    /// Test Class: (Arrange -> Act -> Assert) Pattern
+    /// [!] Test Class: (Arrange -> Act -> Assert) Pattern
+    /// 필요한 NuGet 패키지: Install-Package Microsoft.EntityFrameworkCore.InMemory
     /// </summary>
     [TestClass]
     public class ArticleRepositoryTest
@@ -80,7 +80,7 @@ namespace ArticleApp.Models.Tests
                 Assert.AreEqual("[2] 게시판 가동", model.Title);
             }
 
-            //[4] GetEditAsync() Method Test
+            //[4] EditAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Empty
@@ -97,7 +97,7 @@ namespace ArticleApp.Models.Tests
                     (await context.Articles.Where(m => m.Id == 2).SingleOrDefaultAsync()).Title);
             }
 
-            //[5] GetDeleteAsync() Method Test
+            //[5] DeleteAsync() Method Test
             using (var context = new ArticleAppDbContext(options))
             {
                 // Empty
