@@ -48,6 +48,7 @@ namespace ArticleApp.Pages.Articles
         /// </summary>
         private async void btnDelete_Click()
         {
+            // BS 5 모달
             await ArticleRepository.DeleteArticleAsync(_article.Id); // 삭제 
             await JSRuntime.InvokeAsync<object>("hideModal", "articleDeleteDialog"); // _Host.cshtml
             _article = new Article(); // 선택 항목 초기화 

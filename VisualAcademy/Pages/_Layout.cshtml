@@ -8,7 +8,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="~/" />
+
+    @*// BS 5 모달*@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+
     <link href="css/site.css" rel="stylesheet" />
     <link href="VisualAcademy.styles.css" rel="stylesheet" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
@@ -29,13 +32,15 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+
+    @*// BS 5 모달*@
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
 
     <script>
+        // BS 5 모달
         function hideModal(modalId) {
             var theModal = new bootstrap.Modal(document.getElementById(modalId), {});
-            theModal.hide(); 
-            console.log(modalId);
+            theModal.hide(); // 이 부분 좀 더 확인 필요            
         }
     </script>
 
