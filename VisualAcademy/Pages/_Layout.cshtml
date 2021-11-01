@@ -39,8 +39,9 @@
     <script>
         // BS 5 모달
         function hideModal(modalId) {
-            var theModal = new bootstrap.Modal(document.getElementById(modalId), {});
-            theModal.hide(); // 이 부분 좀 더 확인 필요            
+            // getInstance 메서드로 모달 폼 가져오기
+            var theModal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+            theModal.hide(); 
         }
     </script>
 
