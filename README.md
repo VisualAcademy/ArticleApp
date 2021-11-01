@@ -2,6 +2,8 @@
 
 **게시판 프로젝트** 개발 또는 강의 또는 집필 소스 모음
 
+ASP.NET Core 6.0 + Bootstrap 5.0 기반 소스는 ArticleApp 솔루션의 VisualAcademy 프로젝트에 있습니다. 
+
 
 # 게시판 프로젝트
 
