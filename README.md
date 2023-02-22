@@ -4,6 +4,9 @@
 
 ASP.NET Core 6.0 + Bootstrap 5.0 기반 소스는 ArticleApp 솔루션의 VisualAcademy 프로젝트에 있습니다. 
 
+   이후로 업데이트되는 다음 경로의 강의 메인 소스에서 진행됩니다.
+   
+   * https://github.com/VisualAcademy/VisualAcademy
 
 # 게시판 프로젝트
 
